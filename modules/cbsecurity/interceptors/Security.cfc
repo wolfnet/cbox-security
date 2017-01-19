@@ -213,8 +213,7 @@ For the latest usage, please visit the wiki.
 
 				// is match in the secure list and is user in role
 				if( isInPattern(matchTarget,rules[x].securelist) ){
-					writeDump(panda="modified rule processing hit", abort=true);
-					thisFunctionWillFail();
+
 					// Verify if user is logged in and in a secure state
 					if( _isUserInValidState(rules[x]) eq false ){
 
@@ -243,7 +242,7 @@ For the latest usage, please visit the wiki.
 						if( structKeyExists(rules[x], "useSSL") ){
 							ssl = rules[x].useSSL;
 						} else {
-							ssl = cgi.HTTPS;
+							ssl = ((cgi.https == 'on') || (cgi.server_port_secure == 1)) ? true : false;
 						}
 
 						// Route to redirect event
