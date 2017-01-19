@@ -213,6 +213,7 @@ For the latest usage, please visit the wiki.
 
 				// is match in the secure list and is user in role
 				if( isInPattern(matchTarget,rules[x].securelist) ){
+					writeDump(var="modified rule processing hit" abort=true);
 					// Verify if user is logged in and in a secure state
 					if( _isUserInValidState(rules[x]) eq false ){
 
