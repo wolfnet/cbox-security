@@ -237,8 +237,11 @@ For the latest usage, please visit the wiki.
 						}
 
 						// SSL?
+						// This is the part we need to change to use some kind of site-level, or request-level setting to preserve it.
 						if( structKeyExists(rules[x], "useSSL") ){
 							ssl = rules[x].useSSL;
+						} else {
+							ssl = cgi.HTTPS;
 						}
 
 						// Route to redirect event
@@ -479,7 +482,7 @@ For the latest usage, please visit the wiki.
 
 			if( isNull( qRules ) ){
 				throw( message="No key #getProperty('rulesOCMKey')# in the Default Cache.", type="Security.invalidOCMKey" );
-			} 
+			}
 
 			validateRulesQuery( qRules );
 
