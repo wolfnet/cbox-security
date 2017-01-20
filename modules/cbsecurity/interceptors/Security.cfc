@@ -242,7 +242,7 @@ For the latest usage, please visit the wiki.
 						if( structKeyExists(rules[x], "useSSL") ){
 							ssl = rules[x].useSSL;
 						} else {
-							ssl = ((cgi.https == 'on') || (cgi.server_port_secure == 1)) ? true : false;
+							ssl = ((cgi.https == 'on') || (cgi.server_port_secure == 1) || reFindNoCase("https://", rc._securedURL)) ? true : false;
 						}
 
 						// Route to redirect event
